@@ -35,9 +35,16 @@ globals:
   - { id: max_g8_still, type: int, initial_value: '0' }
 
 ##########################
+# Logger
+##########################
+logger:
+  baud_rate: 0
+
+##########################
 # UART & LD2410
 ##########################
 uart:
+  id: ld2410_uart
   tx_pin: ${tx_pin}
   rx_pin: ${rx_pin}
   baud_rate: 256000
@@ -46,6 +53,7 @@ uart:
 
 ld2410:
   id: ld2410_sensor
+  uart_id: ld2410_uart
 
 ##########################
 # Switch for engineering mode
