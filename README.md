@@ -9,10 +9,13 @@ It collects the maximum move/still values per gate during a calibration run and 
 
 ```yaml
 packages:
-  ld2410: github://gevorgmansuryan/esphome-tools/packages/ld2410.yaml@main
-    vars:
-      tx_pin: GPIO21             # UART TX pin
-      rx_pin: GPIO20             # UART RX pin
-      default_threshold: 1       # Margin added to maxima
-      collection_seconds: 30     # Duration of calibration in seconds
+  ld2410:
+    url: https://github.com/gevorgmansuryan/esphome-tools
+    files:
+      - path: packages/ld2410.yaml
+        vars:
+          tx_pin: GPIO21
+          rx_pin: GPIO20
+          default_threshold: 1
+          collection_seconds: 30
 ```
