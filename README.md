@@ -14,8 +14,8 @@ packages:
     files:
       - path: packages/ld2410.yaml
         vars:
-          tx_pin: GPIO21
-          rx_pin: GPIO20
-          default_threshold: 1
-          collection_seconds: 30
+          tx_pin: TX              # replace with your TX pin
+          rx_pin: RX              # replace with your RX pin
+          default_threshold: 1    # how many seconds to collect calibration data
+          collection_seconds: 30  # default threshold margin to add on top of maxima
 ```
