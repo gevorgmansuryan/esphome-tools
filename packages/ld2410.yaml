@@ -339,8 +339,8 @@ button:
             };
 
             for (int i = 0; i < 9; i++) {
-              int move_val  = fixed_move[i] != "-1" ? atoi(fixed_move[i].c_str() : max_move[i] + move_margin;
-              int still_val = fixed_still[i] != "-1" ? atoi(fixed_still[i].c_str() : max_still[i] + still_margin;
+              int move_val  = fixed_move[i] != "-1" ? atoi(fixed_move[i].c_str()) : max_move[i] + move_margin;
+              int still_val = fixed_still[i] != "-1" ? atoi(fixed_still[i].c_str()) : max_still[i] + still_margin;
 
               move_nums[i]->make_call().set_value((float)move_val).perform();
               still_nums[i]->make_call().set_value((float)still_val).perform();
