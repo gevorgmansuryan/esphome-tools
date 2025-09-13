@@ -3,10 +3,31 @@
 # ============================================================
 
 substitutions:
-  tx_pin: TX                  # replace with your TX pin
-  rx_pin: RX                  # replace with your RX pin
-  collection_seconds: "30"    # how many seconds to collect calibration data
-  default_threshold: "1"      # default threshold margin to add on top of maxima
+  tx_pin: TX                      # replace with your TX pin
+  rx_pin: RX                      # replace with your RX pin
+  default_collection_seconds: 30  # how many seconds to collect calibration data
+  default_move_margin: 2          # default threshold margin to add on top of maxima
+  default_still_margin: 1         # default threshold margin to add on top of maxima
+  
+  # fixed gate values, "-1" = "not set"
+  g0_move: 50
+  g1_move: 50
+  g2_move: "-1"
+  g3_move: "-1"
+  g4_move: "-1"
+  g5_move: "-1"
+  g6_move: "-1"
+  g7_move: "-1"
+  g8_move: "-1"
+  g0_still: 0
+  g1_still: 0
+  g2_still: "-1"
+  g3_still: "-1"
+  g4_still: "-1"
+  g5_still: "-1"
+  g6_still: "-1"
+  g7_still: "-1"
+  g8_still: "-1"
 
 ##########################
 # Globals to store maxima
@@ -33,6 +54,28 @@ globals:
   - { id: max_g6_still, type: int, initial_value: '0' }
   - { id: max_g7_still, type: int, initial_value: '0' }
   - { id: max_g8_still, type: int, initial_value: '0' }
+  
+  # Move energy fixed values per gate   
+  - { id: fixed_g0_move, type: int, initial_value: ${g0_move} }
+  - { id: fixed_g1_move, type: int, initial_value: ${g1_move} }
+  - { id: fixed_g2_move, type: int, initial_value: ${g2_move} }
+  - { id: fixed_g3_move, type: int, initial_value: ${g3_move} }
+  - { id: fixed_g4_move, type: int, initial_value: ${g4_move} }
+  - { id: fixed_g5_move, type: int, initial_value: ${g5_move} }
+  - { id: fixed_g6_move, type: int, initial_value: ${g6_move} }
+  - { id: fixed_g7_move, type: int, initial_value: ${g7_move} }
+  - { id: fixed_g8_move, type: int, initial_value: ${g8_move} }
+
+  # Still energy fixed values per gate
+  - { id: fixed_g0_still, type: int, initial_value: ${g0_still} }
+  - { id: fixed_g1_still, type: int, initial_value: ${g1_still} }
+  - { id: fixed_g2_still, type: int, initial_value: ${g2_still} }
+  - { id: fixed_g3_still, type: int, initial_value: ${g3_still} }
+  - { id: fixed_g4_still, type: int, initial_value: ${g4_still} }
+  - { id: fixed_g5_still, type: int, initial_value: ${g5_still} }
+  - { id: fixed_g6_still, type: int, initial_value: ${g6_still} }
+  - { id: fixed_g7_still, type: int, initial_value: ${g7_still} }
+  - { id: fixed_g8_still, type: int, initial_value: ${g8_still} }    
 
 ##########################
 # Logger
@@ -119,45 +162,66 @@ binary_sensor:
 ##########################
 number:
   - platform: ld2410
-    timeout: { name: Timeout }
-    light_threshold: { name: Light threshold }
-    max_move_distance_gate: { name: Max move distance gate }
-    max_still_distance_gate: { name: Max still distance gate }
+    timeout: { name: Timeout, mode: box }
+    light_threshold: { name: Light threshold, mode: box }
+    max_move_distance_gate: { name: Max move distance gate, mode: box }
+    max_still_distance_gate: { name: Max still distance gate, mode: box }
 
     g0:
-      move_threshold: { id: g0_move_threshold, name: G0 move threshold }
-      still_threshold: { id: g0_still_threshold, name: G0 still threshold }
+      move_threshold: { id: g0_move_threshold, name: G0 move threshold, mode: box }
+      still_threshold: { id: g0_still_threshold, name: G0 still threshold, mode: box }
     g1:
-      move_threshold: { id: g1_move_threshold, name: G1 move threshold }
-      still_threshold: { id: g1_still_threshold, name: G1 still threshold }
+      move_threshold: { id: g1_move_threshold, name: G1 move threshold, mode: box }
+      still_threshold: { id: g1_still_threshold, name: G1 still threshold, mode: box }
     g2:
-      move_threshold: { id: g2_move_threshold, name: G2 move threshold }
-      still_threshold: { id: g2_still_threshold, name: G2 still threshold }
+      move_threshold: { id: g2_move_threshold, name: G2 move threshold, mode: box }
+      still_threshold: { id: g2_still_threshold, name: G2 still threshold, mode: box }
     g3:
-      move_threshold: { id: g3_move_threshold, name: G3 move threshold }
-      still_threshold: { id: g3_still_threshold, name: G3 still threshold }
+      move_threshold: { id: g3_move_threshold, name: G3 move threshold, mode: box }
+      still_threshold: { id: g3_still_threshold, name: G3 still threshold, mode: box }
     g4:
-      move_threshold: { id: g4_move_threshold, name: G4 move threshold }
-      still_threshold: { id: g4_still_threshold, name: G4 still threshold }
+      move_threshold: { id: g4_move_threshold, name: G4 move threshold, mode: box }
+      still_threshold: { id: g4_still_threshold, name: G4 still threshold, mode: box }
     g5:
-      move_threshold: { id: g5_move_threshold, name: G5 move threshold }
-      still_threshold: { id: g5_still_threshold, name: G5 still threshold }
+      move_threshold: { id: g5_move_threshold, name: G5 move threshold, mode: box }
+      still_threshold: { id: g5_still_threshold, name: G5 still threshold, mode: box }
     g6:
-      move_threshold: { id: g6_move_threshold, name: G6 move threshold }
-      still_threshold: { id: g6_still_threshold, name: G6 still threshold }
+      move_threshold: { id: g6_move_threshold, name: G6 move threshold, mode: box }
+      still_threshold: { id: g6_still_threshold, name: G6 still threshold, mode: box }
     g7:
-      move_threshold: { id: g7_move_threshold, name: G7 move threshold }
-      still_threshold: { id: g7_still_threshold, name: G7 still threshold }
+      move_threshold: { id: g7_move_threshold, name: G7 move threshold, mode: box }
+      still_threshold: { id: g7_still_threshold, name: G7 still threshold, mode: box }
     g8:
-      move_threshold: { id: g8_move_threshold, name: G8 move threshold }
-      still_threshold: { id: g8_still_threshold, name: G8 still threshold }
+      move_threshold: { id: g8_move_threshold, name: G8 move threshold, mode: box }
+      still_threshold: { id: g8_still_threshold, name: G8 still threshold, mode: box }
 
   # User-configurable margin added to maxima
   - platform: template
-    name: "Threshold Margin"
-    id: ld2410_threshold
+    name: "Move Margin"
+    id: ld2410_move_margin
+    mode: box
     optimistic: true
-    initial_value: ${default_threshold}
+    initial_value: ${default_move_margin}
+    min_value: 0
+    max_value: 100
+    step: 1
+
+  - platform: template
+    name: "Still Margin"
+    id: ld2410_still_margin
+    mode: box
+    optimistic: true
+    initial_value: ${default_still_margin}
+    min_value: 0
+    max_value: 100
+    step: 1
+
+  - platform: template
+    name: "Collection Seconds"
+    id: ld2410_collection_seconds
+    mode: box
+    optimistic: true
+    initial_value: ${default_collection_seconds}
     min_value: 0
     max_value: 100
     step: 1
@@ -196,7 +260,7 @@ button:
             id(max_g0_still)=id(max_g1_still)=id(max_g2_still)=id(max_g3_still)=id(max_g4_still)=0;
             id(max_g5_still)=id(max_g6_still)=id(max_g7_still)=id(max_g8_still)=0;
         - repeat:
-            count: ${collection_seconds}
+            count: !lambda "return id(ld2410_collection_seconds).state;"
             then:
               - delay: 1s
               - lambda: |-
@@ -238,43 +302,51 @@ button:
     on_press:
       then:
         - lambda: |-
-            int t = (int)id(ld2410_threshold).state;
+            int move_margin = (int)id(ld2410_move_margin).state;
+            int still_margin = (int)id(ld2410_still_margin).state;
 
-            // Arrays for loop-based update
-            esphome::number::Number* move_nums[9] = {
+            std::array<esphome::number::Number*,9> move_nums = {
               id(g0_move_threshold), id(g1_move_threshold), id(g2_move_threshold),
               id(g3_move_threshold), id(g4_move_threshold), id(g5_move_threshold),
               id(g6_move_threshold), id(g7_move_threshold), id(g8_move_threshold)
             };
-            esphome::number::Number* still_nums[9] = {
+            std::array<esphome::number::Number*,9> still_nums = {
               id(g0_still_threshold), id(g1_still_threshold), id(g2_still_threshold),
               id(g3_still_threshold), id(g4_still_threshold), id(g5_still_threshold),
               id(g6_still_threshold), id(g7_still_threshold), id(g8_still_threshold)
             };
-            int max_move[9] = {
+
+            std::array<int,9> max_move = {
               id(max_g0_move), id(max_g1_move), id(max_g2_move),
               id(max_g3_move), id(max_g4_move), id(max_g5_move),
               id(max_g6_move), id(max_g7_move), id(max_g8_move)
             };
-            int max_still[9] = {
+            std::array<int,9> fixed_move = {
+              id(fixed_g0_move), id(fixed_g1_move), id(fixed_g2_move),
+              id(fixed_g3_move), id(fixed_g4_move), id(fixed_g5_move),
+              id(fixed_g6_move), id(fixed_g7_move), id(fixed_g8_move)
+            };
+
+            std::array<int,9> max_still = {
               id(max_g0_still), id(max_g1_still), id(max_g2_still),
               id(max_g3_still), id(max_g4_still), id(max_g5_still),
               id(max_g6_still), id(max_g7_still), id(max_g8_still)
             };
+            std::array<int,9> fixed_still = {
+              id(fixed_g0_still), id(fixed_g1_still), id(fixed_g2_still),
+              id(fixed_g3_still), id(fixed_g4_still), id(fixed_g5_still),
+              id(fixed_g6_still), id(fixed_g7_still), id(fixed_g8_still)
+            };
 
-            // Apply thresholds for all 9 gates
-            for (int i = 0; i < 9; ++i) {
-              auto c1 = move_nums[i]->make_call();
-              c1.set_value((float)(max_move[i] + t));
-              c1.perform();
+            for (int i = 0; i < 9; i++) {
+              int move_val  = (fixed_move[i]  != -1 ? fixed_move[i]  : max_move[i])  + move_margin;
+              int still_val = (fixed_still[i] != -1 ? fixed_still[i] : max_still[i]) + still_margin;
 
-              auto c2 = still_nums[i]->make_call();
-              c2.set_value((float)(max_still[i] + t));
-              c2.perform();
+              move_nums[i]->make_call().set_value((float)move_val).perform();
+              still_nums[i]->make_call().set_value((float)still_val).perform();
             }
 
-            ESP_LOGI("ld2410", "Applied thresholds with +%d margin", t);
-
+            ESP_LOGI("ld2410", "Applied thresholds (defaults if set, otherwise maxima) + margins");
 ##########################
 # Scripts
 ##########################
@@ -285,7 +357,7 @@ script:
       - lambda: |-
           char buf[512];
           snprintf(buf, sizeof(buf),
-            "Move max: %d,%d,%d,%d,%d,%d,%d,%d,%d | Still max: %d,%d,%d,%d,%d,%d,%d,%d,%d",
+            "Move: %d,%d,%d,%d,%d,%d,%d,%d,%d | Still: %d,%d,%d,%d,%d,%d,%d,%d,%d",
             id(max_g0_move), id(max_g1_move), id(max_g2_move), id(max_g3_move), id(max_g4_move),
             id(max_g5_move), id(max_g6_move), id(max_g7_move), id(max_g8_move),
             id(max_g0_still), id(max_g1_still), id(max_g2_still), id(max_g3_still), id(max_g4_still),
