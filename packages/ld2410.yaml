@@ -231,7 +231,7 @@ number:
 ##########################
 text_sensor:
   - platform: template
-    name: "LD2410 Calibration Report"
+    name: "Calibration Report"
     id: ld2410_max_report
     icon: "mdi:radar"
 
