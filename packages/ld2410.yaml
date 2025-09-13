@@ -56,26 +56,26 @@ globals:
   - { id: max_g8_still, type: int, initial_value: '0' }
 
   # Move energy fixed values per gate
-  - { id: fixed_g0_move, type: int, initial_value: "'${g0_move}'" }
-  - { id: fixed_g1_move, type: int, initial_value: "'${g1_move}'" }
-  - { id: fixed_g2_move, type: int, initial_value: "'${g2_move}'" }
-  - { id: fixed_g3_move, type: int, initial_value: "'${g3_move}'" }
-  - { id: fixed_g4_move, type: int, initial_value: "'${g4_move}'" }
-  - { id: fixed_g5_move, type: int, initial_value: "'${g5_move}'" }
-  - { id: fixed_g6_move, type: int, initial_value: "'${g6_move}'" }
-  - { id: fixed_g7_move, type: int, initial_value: "'${g7_move}'" }
-  - { id: fixed_g8_move, type: int, initial_value: "'${g8_move}'" }
+  - { id: fixed_g0_move, type: std::string, initial_value: "${g0_move}" }
+  - { id: fixed_g1_move, type: std::string, initial_value: "${g1_move}" }
+  - { id: fixed_g2_move, type: std::string, initial_value: "${g2_move}" }
+  - { id: fixed_g3_move, type: std::string, initial_value: "${g3_move}" }
+  - { id: fixed_g4_move, type: std::string, initial_value: "${g4_move}" }
+  - { id: fixed_g5_move, type: std::string, initial_value: "${g5_move}" }
+  - { id: fixed_g6_move, type: std::string, initial_value: "${g6_move}" }
+  - { id: fixed_g7_move, type: std::string, initial_value: "${g7_move}" }
+  - { id: fixed_g8_move, type: std::string, initial_value: "${g8_move}" }
 
   # Still energy fixed values per gate
-  - { id: fixed_g0_still, type: int, initial_value: "'${g0_still}'" }
-  - { id: fixed_g1_still, type: int, initial_value: "'${g1_still}'" }
-  - { id: fixed_g2_still, type: int, initial_value: "'${g2_still}'" }
-  - { id: fixed_g3_still, type: int, initial_value: "'${g3_still}'" }
-  - { id: fixed_g4_still, type: int, initial_value: "'${g4_still}'" }
-  - { id: fixed_g5_still, type: int, initial_value: "'${g5_still}'" }
-  - { id: fixed_g6_still, type: int, initial_value: "'${g6_still}'" }
-  - { id: fixed_g7_still, type: int, initial_value: "'${g7_still}'" }
-  - { id: fixed_g8_still, type: int, initial_value: "'${g8_still}'" }
+  - { id: fixed_g0_still, type: std::string, initial_value: "${g0_still}" }
+  - { id: fixed_g1_still, type: std::string, initial_value: "${g1_still}" }
+  - { id: fixed_g2_still, type: std::string, initial_value: "${g2_still}" }
+  - { id: fixed_g3_still, type: std::string, initial_value: "${g3_still}" }
+  - { id: fixed_g4_still, type: std::string, initial_value: "${g4_still}" }
+  - { id: fixed_g5_still, type: std::string, initial_value: "${g5_still}" }
+  - { id: fixed_g6_still, type: std::string, initial_value: "${g6_still}" }
+  - { id: fixed_g7_still, type: std::string, initial_value: "${g7_still}" }
+  - { id: fixed_g8_still, type: std::string, initial_value: "${g8_still}" }
 
 ##########################
 # Logger
