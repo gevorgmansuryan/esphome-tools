@@ -246,6 +246,8 @@ select:
       name: Light function
     out_pin_level:
       name: Out pin level
+    baud_rate:
+      name: Baud rate
 
 ##########################
 # Buttons
